@@ -243,6 +243,7 @@ p {
         max-width: 85%;
         max-height: 50vh;
         object-fit: contain;
+		margin-bottom: 5px;
     }
 
     .right-text {
@@ -260,6 +261,7 @@ p {
         margin: 8px 0;
     }
 }
+
 
 
 

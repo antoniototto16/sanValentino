@@ -206,7 +206,7 @@ p {
 
 
 #noBtn {
-    touch-action: manipulation;
+    touch-action: none;
 }
 
 @media (max-width: 768px) {
@@ -260,6 +260,7 @@ p {
         margin: 8px 0;
     }
 }
+
 
 
 

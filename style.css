@@ -236,14 +236,13 @@ p {
         width: 100%;
         padding: 30px 20px;
         box-sizing: border-box;
-        gap: 0;
+        gap: 15px;
     }
 
     .left-image {
         max-width: 85%;
         max-height: 50vh;
         object-fit: contain;
-		margin-bottom: 5px;
     }
 
     .right-text {
@@ -261,6 +260,7 @@ p {
         margin: 8px 0;
     }
 }
+
 
 
 

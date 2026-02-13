@@ -231,7 +231,7 @@ p {
 
    .success-container {
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: flex-start;
         height: 100vh;
         width: 100%;
         padding: 30px 20px;
@@ -241,7 +241,7 @@ p {
 
     .left-image {
         max-width: 85%;
-        max-height: 55vh;
+        max-height: 50vh;
         object-fit: contain;
     }
 
@@ -252,14 +252,15 @@ p {
 
     .right-text h2 {
         font-size: 8vw;
-        margin-bottom: 20px;
+        margin-bottom: 5px;
     }
 
     .right-text p {
         font-size: 6vw;
-        margin: 10px 0;
+        margin: 8px 0;
     }
 }
+
 
 
 

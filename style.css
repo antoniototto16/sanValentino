@@ -209,3 +209,42 @@ p {
     touch-action: manipulation;
 }
 
+@media (max-width: 768px) {
+
+    h1 {
+        font-size: 8vw;
+    }
+
+    p {
+        font-size: 6vw;
+    }
+
+    .btn {
+        font-size: 18px;
+        padding: 12px 20px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .success-container {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .left-image {
+        max-width: 70%;
+    }
+
+    .right-text p {
+        font-size: 4vw;
+    }
+}
+
+
+
+
+

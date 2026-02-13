@@ -45,39 +45,50 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Animazione pulsante NO
     if (noBtn && siBtn) {
-        noBtn.addEventListener("mouseenter", function() {
-            if (isMoving) return;
-            isMoving = true;
+       function moveButton(e) {
+        e.preventDefault(); // evita comportamenti strani su mobile
 
-            noBtn.style.position = "fixed";
+        if (isMoving) return;
+        isMoving = true;
 
-            const btnWidth = noBtn.offsetWidth;
-            const btnHeight = noBtn.offsetHeight;
-            const maxX = window.innerWidth - btnWidth;
-            const maxY = window.innerHeight - btnHeight;
+        noBtn.style.position = "fixed";
 
-            const x = Math.random() * maxX;
-            const y = Math.random() * maxY;
+        const btnWidth = noBtn.offsetWidth;
+        const btnHeight = noBtn.offsetHeight;
 
-            noBtn.style.left = x + "px";
-            noBtn.style.top = y + "px";
+        const maxX = window.innerWidth - btnWidth;
+        const maxY = window.innerHeight - btnHeight;
 
-            // ---- assegna la frase successiva dal mazzo mescolato ----
-            noBtn.innerText = frasiRandom[frasiIndex];
-            frasiIndex++;
+        const x = Math.random() * maxX;
+        const y = Math.random() * maxY;
 
-            // se abbiamo finito tutte le frasi, ricrea un mazzo mescolato
-            if (frasiIndex >= frasiRandom.length) {
-                frasiIndex = 0;
-                shuffleArray(frasiRandom);
-            }
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
 
-            // ---- ingrandimento pulsante SI ----
-            const currentSize = parseFloat(window.getComputedStyle(siBtn).fontSize);
-            siBtn.style.fontSize = (currentSize * 1.3) + "px";
+        // frase dal mazzo mescolato
+        noBtn.innerText = frasiRandom[frasiIndex];
+        frasiIndex++;
 
-            setTimeout(() => { isMoving = false; }, 200);
-        });
+        if (frasiIndex >= frasiRandom.length) {
+            frasiIndex = 0;
+            shuffleArray(frasiRandom);
+        }
+
+        // ingrandimento pulsante SI
+        const currentSize = parseFloat(window.getComputedStyle(siBtn).fontSize);
+        siBtn.style.fontSize = (currentSize * 1.3) + "px";
+
+        setTimeout(() => { isMoving = false; }, 200);
+    }
+
+    // Desktop
+    noBtn.addEventListener("mouseenter", moveButton);
+
+    // Mobile
+    noBtn.addEventListener("touchstart", moveButton);
+
+    // Fallback generale
+    noBtn.addEventListener("click", moveButton);
     }
 
     // -------------------------
@@ -110,3 +121,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
+

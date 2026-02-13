@@ -53,7 +53,7 @@ p {
 
 /* Sfondo successo */
 .success-bg {
-    background-image: url("pic/domanda_background.jpg");
+    background-image: url("domanda_background.jpg");
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -203,5 +203,6 @@ p {
         opacity: 0;
     }
 }
+
 
 

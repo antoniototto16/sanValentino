@@ -45,50 +45,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Animazione pulsante NO
     if (noBtn && siBtn) {
-       function moveButton(e) {
-        e.preventDefault(); // evita comportamenti strani su mobile
-
-        if (isMoving) return;
-        isMoving = true;
-
-        noBtn.style.position = "fixed";
-
-        const btnWidth = noBtn.offsetWidth;
-        const btnHeight = noBtn.offsetHeight;
-
-        const maxX = window.innerWidth - btnWidth;
-        const maxY = window.innerHeight - btnHeight;
-
-        const x = Math.random() * maxX;
-        const y = Math.random() * maxY;
-
-        noBtn.style.left = x + "px";
-        noBtn.style.top = y + "px";
-
-        // frase dal mazzo mescolato
-        noBtn.innerText = frasiRandom[frasiIndex];
-        frasiIndex++;
-
-        if (frasiIndex >= frasiRandom.length) {
-            frasiIndex = 0;
-            shuffleArray(frasiRandom);
-        }
-
-        // ingrandimento pulsante SI
-        const currentSize = parseFloat(window.getComputedStyle(siBtn).fontSize);
-        siBtn.style.fontSize = (currentSize * 1.3) + "px";
-
-        setTimeout(() => { isMoving = false; }, 200);
-    }
-
-    // Desktop
-    noBtn.addEventListener("mouseenter", moveButton);
-
-    // Mobile
-    noBtn.addEventListener("touchstart", moveButton);
-
-    // Fallback generale
-    noBtn.addEventListener("click", moveButton);
+		function moveButton(e) {
+		
+		    // Evita il doppio evento touch + click
+		    if (e.type === "touchstart") {
+		        e.stopPropagation();
+		    }
+		
+		    if (isMoving) return;
+		    isMoving = true;
+		
+		    noBtn.style.position = "fixed";
+		
+		    const btnWidth = noBtn.offsetWidth;
+		    const btnHeight = noBtn.offsetHeight;
+		
+		    // margine di sicurezza per non andare troppo ai bordi
+		    const padding = 20;
+		
+		    const maxX = window.innerWidth - btnWidth - padding;
+		    const maxY = window.innerHeight - btnHeight - padding;
+		
+		    const x = Math.max(padding, Math.random() * maxX);
+		    const y = Math.max(padding, Math.random() * maxY);
+		
+		    noBtn.style.left = x + "px";
+		    noBtn.style.top = y + "px";
+		
+		    // frase random
+		    noBtn.innerText = frasiRandom[frasiIndex];
+		    frasiIndex++;
+		
+		    if (frasiIndex >= frasiRandom.length) {
+		        frasiIndex = 0;
+		        shuffleArray(frasiRandom);
+		    }
+		
+		    // ingrandimento SI
+		    const currentSize = parseFloat(window.getComputedStyle(siBtn).fontSize);
+		    siBtn.style.fontSize = (currentSize * 1.15) + "px";
+		
+		    setTimeout(() => { isMoving = false; }, 150);
+		}
+	    // Desktop
+	    noBtn.addEventListener("mouseenter", moveButton);
+	
+	    // Mobile
+	    noBtn.addEventListener("touchstart", moveButton);
     }
 
     // -------------------------
@@ -121,4 +124,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
+
 

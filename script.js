@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		
 		    // Evita il doppio evento touch + click
 		    if (e.type === "touchstart") {
-		        e.stopPropagation();
+		        e.preventDefault();
 		    }
 		
 		    if (isMoving) return;
@@ -124,5 +124,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
+
 
 
